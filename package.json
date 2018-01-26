@@ -1,0 +1,23 @@
+{
+  "name": "ferronatogiovanni26jan18",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gioferro96/ferronatogiovanni26jan18.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gioferro96/ferronatogiovanni26jan18/issues"
+  },
+  "homepage": "https://github.com/gioferro96/ferronatogiovanni26jan18#readme",
+  "dependencies": {
+    "express": "^4.16.2",
+    "jest": "^22.1.4"
+  }
+}
