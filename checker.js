@@ -1,15 +1,57 @@
 
-const fetch = require('node-fetch')
+const fetch = require('node-fetch');
 
 function check(url, invocationParameters,  expectedResultData, expectedResultStatus) {
-
+    let rStatus;
     const checkResult = { // this is the object you need to set and return
         urlChecked: url,
         resultData: null,
         resultStatus: null,
         statusTestPassed: null,
         resultDataAsExpected: null
+    };
+    let myurl = url + "?";
+    for (let p of Object.keys(invocationParameters)){
+        myurl = myurl + p + "=" + invocationParameters[p] + "&";
     }
+    console.log("myurl = "+myurl);
+    return fetch(myurl,{
+        method: 'GET',
+        headers: {
+            'Accept': 'application/json'
+        }
+    })
+    .then(getResponse => {
+        rStatus = getResponse.statusCode;
+        console.log("rstatus = "+rStatus);
+        return getResponse.body;
+    })
+    .then(responseBody => {
+        if(compareResults(expectedResultData,responseBody)){
+            checkResult["urlChecked"] = myurl;
+            checkResult["resultData"] = responseBody;
+            checkResult["resultStatus"] = rStatus;
+            if (expectedResultData == rStatus)
+                checkResult["statusTestPassed"] = true;
+            else
+                checkResult["statusTestPassed"] = false;
+            checkResult["resultDataAsExpected"] = true;
+        }
+        else{
+            checkResult["urlChecked"] = myurl;
+            checkResult["resultData"] = responseBody;
+            checkResult["resultStatus"] = rStatus;
+            if (expectedResultData == rStatus)
+                checkResult["statusTestPassed"] = true;
+            else
+                checkResult["statusTestPassed"] = false;
+            checkResult["resultDataAsExpected"] = false;
+        }
+        console.log("checkResult : "+checkResult);
+        return checkResult;
+    });
+ 
+    
 
 
 
