@@ -53,7 +53,10 @@ function check(url, invocationParameters,  expectedResultData, expectedResultSta
         console.log("checkResult[resultDataAsExpected]= "+checkResult["resultDataAsExpected"]);
         return checkResult;
     })
-    .then(result => {return result;});
+    .then(result => {
+        console.log("finito");
+        return result;
+    })
 
 }
 
