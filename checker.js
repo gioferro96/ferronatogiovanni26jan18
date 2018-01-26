@@ -22,7 +22,7 @@ function check(url, invocationParameters,  expectedResultData, expectedResultSta
         }
     })
     .then(getResponse => {
-        rStatus = getResponse.statusCode;
+        rStatus = getResponse.status;
         console.log("rstatus = "+rStatus);
         return getResponse.body;
     })
@@ -47,13 +47,13 @@ function check(url, invocationParameters,  expectedResultData, expectedResultSta
                 checkResult["statusTestPassed"] = false;
             checkResult["resultDataAsExpected"] = false;
         }
-        console.log("checkResult : "+checkResult);
+        console.log("checkResult[url]= "+checkResult["urlChecked"]);
+        console.log("checkResult[resultData]= "+checkResult["resultData"]);
+        console.log("checkResult[resultStatus]= "+checkResult["resultStatus"]);
+        console.log("checkResult[resultDataAsExpected]= "+checkResult["resultDataAsExpected"]);
         return checkResult;
-    });
- 
-    
-
-
+    })
+    .then(result => {return result;});
 
 }
 

@@ -23,7 +23,11 @@ app.post('/check', (req,res)=>{
 	let expStatus = req.body.expectedResultStatus;
 	console.log("url to check: "+url);
 	let risp = checker(url,invParam,expRes,expStatus);
-	res.json(risp);
+	Promise.all(risp)
+	.then(results => {
+	    res.json(results);
+	});
+	//res.json(risp);
 });
 
 app.listen(app.get('port'), function() {
