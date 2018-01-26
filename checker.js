@@ -57,6 +57,10 @@ function check(url, invocationParameters,  expectedResultData, expectedResultSta
         console.log("finito");
         return result;
     })
+    .catch(error => {
+        //handle errors thrown in the previous .then
+        console.log(error);
+    });
 
 }
 

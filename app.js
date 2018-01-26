@@ -26,7 +26,11 @@ app.post('/check', (req,res)=>{
 	risp.then(a => {
 		console.log("done fetching");
 		res.json(a);
-	});
+	})
+	.catch(error => {
+		//handle errors thrown in the previous .then
+        console.log(error);
+    });
 });
 
 app.listen(app.get('port'), function() {
